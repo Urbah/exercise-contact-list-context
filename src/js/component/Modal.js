@@ -29,7 +29,7 @@ export const Modal = props => {
 						{console.log(props.contactID)}
 						<p>Warning: unknown consequences after this point... Kidding!</p>
 					</div>
-					<div className="modal-footer">
+					<div className="modal-footer" onClick={() => props.onClose()}>
 						<button type="button" className="btn btn-primary">
 							Oh no!
 						</button>
@@ -37,7 +37,10 @@ export const Modal = props => {
 							type="button"
 							className="btn btn-secondary"
 							data-dismiss="modal"
-							onClick={e => actions.deleteContact(props.contactID)}>
+							onClick={() => {
+								actions.deleteContact(props.contactID);
+								props.onClose();
+							}}>
 							Do it!
 						</button>
 					</div>
